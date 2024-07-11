@@ -1,17 +1,27 @@
 {
   "name": "clipboard-js",
   "version": "1.0.0",
-  "description": "",
+  "description": "A Cross platform clipboard library, supporting Windows, MacOS, and Linux",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fanybook/clipboard-js.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "ffi",
+    "napi",
+    "nodejs",
+    "windows",
+    "macos",
+    "linux",
+    "clipboard",
+    "library"
+  ],
+  "author": "fanybook",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fanybook/clipboard-js/issues"
