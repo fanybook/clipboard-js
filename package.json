@@ -4,7 +4,8 @@
   "description": "A Cross platform clipboard library, supporting Windows, MacOS, and Linux",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "npm run build-macos-libs && node index.js",
+    "build-macos-libs": "go build -o ./libs/mylib.dylib -buildmode=c-shared ./golang/mylib.go",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

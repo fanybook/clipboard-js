@@ -75,6 +75,7 @@ extern "C" {
 #endif
 
 extern GoInt Add(GoInt a, GoInt b);
+extern void ProcessData(char* data, int length);
 
 #ifdef __cplusplus
 }
