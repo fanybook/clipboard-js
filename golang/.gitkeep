@@ -1,0 +1,2 @@
+# macos
+go build -o ../libs/mylib.dylib -buildmode=c-shared mylib.go
