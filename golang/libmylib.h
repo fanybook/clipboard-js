@@ -19,6 +19,12 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 /* Start of preamble from import "C" comments.  */
 
 
+#line 5 "mylib.go"
+
+#include "callback.h"
+
+
+#line 1 "cgo-generated-wrapper"
 
 
 /* End of preamble from import "C" comments.  */
@@ -76,6 +82,10 @@ extern "C" {
 
 extern GoInt Add(GoInt a, GoInt b);
 extern void ProcessData(char* data, int length);
+extern char* LoadImageBytes(size_t* size);
+extern void FreeCharMem(char* charMem);
+extern void RegisterCallback(Callback cb);
+extern void TriggerCallback();
 
 #ifdef __cplusplus
 }

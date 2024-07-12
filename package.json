@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm run build-macos-libs && node index.js",
     "build-macos-libs": "go build -o ./libs/mylib.dylib -buildmode=c-shared ./golang/mylib.go",
+    "build-macos-libs2": "go build -o ./libs/mylib.dylib -buildmode=c-shared -ldflags=\"-s -w\" ./golang/mylib.go && strip -u -r -x ./libs/mylib.dylib",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
