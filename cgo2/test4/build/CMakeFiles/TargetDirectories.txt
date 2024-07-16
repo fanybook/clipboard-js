@@ -1,0 +1,8 @@
+/Users/admin/workspace-github/fanybook/clipboard-js/cgo2/test4/build/CMakeFiles/hello.dir
+/Users/admin/workspace-github/fanybook/clipboard-js/cgo2/test4/build/CMakeFiles/gohello.dir
+/Users/admin/workspace-github/fanybook/clipboard-js/cgo2/test4/build/CMakeFiles/edit_cache.dir
+/Users/admin/workspace-github/fanybook/clipboard-js/cgo2/test4/build/CMakeFiles/rebuild_cache.dir
+/Users/admin/workspace-github/fanybook/clipboard-js/cgo2/test4/build/CMakeFiles/list_install_components.dir
+/Users/admin/workspace-github/fanybook/clipboard-js/cgo2/test4/build/CMakeFiles/install.dir
+/Users/admin/workspace-github/fanybook/clipboard-js/cgo2/test4/build/CMakeFiles/install/local.dir
+/Users/admin/workspace-github/fanybook/clipboard-js/cgo2/test4/build/CMakeFiles/install/strip.dir
