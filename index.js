@@ -40,8 +40,13 @@ loadImageBytes()
 // 注册回调函数
 mylib.RegisterCallback(callback);
 
+setTimeout(async function() {
+    mylib.TriggerCallback();
+}, 1000)
 // 触发回调函数
-mylib.TriggerCallback();
+
+
+console.log(123.111)
 
 function loadImageBytes() {
     // 调用 Go 函数并接收返回值

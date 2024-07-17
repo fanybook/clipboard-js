@@ -3,6 +3,9 @@ const ref = require('ref-napi');
 const fs = require('node:fs');
 const path = require('node:path');
 
+// 定义回调函数类型
+const callbackType = ffi.Function('void', ['int']);
+
 // 定义 C 函数原型
 const CInt = ref.types.int;
 const CString = ref.types.CString;
@@ -30,6 +33,9 @@ const clipboard = ffi.Library('./libclipboard.dylib', {
     'ClipboardWriteRAWD': ['void', [charPtr, CInt]],
     'ClipboardWritePaths': ['void', [CString]],
     'ClipboardWriteImage': ['void', [charPtr, CInt]],
+
+    'ClipboardWatch': ['void', [callbackType]],
+    // 'ClipboardWatchStart': ['void', []],
 });
 
 // console.log(JSON.stringify({
@@ -44,6 +50,33 @@ clipboard.ClipboardWrite(JSON.stringify({
     html: '<p>世界</p>',
     rawd: Array.from(new Uint8Array(Buffer.from('hello rawd666!'))),
 }))
+
+
+
+
+// // 创建回调函数
+// const callback = ffi.Callback('void', ['int'], (value) => {
+//     console.log(`Callback called with value666: ${value}`);
+// });
+// clipboard.ClipboardWatch(callback);
+
+function startWatch() {
+    return new Promise((resolve, reject) => {
+        const callback = ffi.Callback('void', ['int'], function(result) {
+            console.log(`Callback called with value777: ${result}`);
+            // resolve(result);
+        });
+
+        clipboard.ClipboardWatch(callback);
+
+        resolve()
+    });
+}
+
+startWatch()
+// setTimeout(async function() {
+//     clipboard.ClipboardWatch(callback);
+// }, 1000);
 
 // // 要读取的图片文件路径
 // const imagePath = path.join(__dirname, 'example_output.png');
@@ -159,6 +192,16 @@ function readClipboardData() {
     // 释放 C 中的内存
     clipboard.FreeCharMem(dataPtrPtr.deref());
 }
+
+let i = 0
+setInterval(function () {
+    i++
+    console.log(777.333)
+
+    if (i > 15) {
+        process.exit();
+    }
+}, 900)
 //
 // clipboardReadImage()
 // function clipboardReadImage() {

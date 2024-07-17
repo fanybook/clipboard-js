@@ -1,2 +1,5 @@
 # macos
 go build -o ../libs/mylib.dylib -buildmode=c-shared mylib.go
+
+
+gcc -c callback.c -o callback.o
