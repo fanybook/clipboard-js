@@ -23,9 +23,18 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 
 
 
+
+// // macos 的编译器可能有问题，可能是有缓存
+// // 同样的代码，修改打印字符串 fmt.Println("fiber thread panic:", r) 竟然会导致出现 fmt.Println("fiber thread panic:", r)
+// #include <stdlib.h>
+// #include "callback/callback.h"
+// #include "callback/callback.c"
+
 #include <stdlib.h>
 
 typedef void (*JsCallback)(char*);
+
+// 编译动态库，就必须加 static，否则 macos 会报 duplicate symbol
 static void callJsCallback(JsCallback cb, char* val) {
     cb(val);
     free(val);
