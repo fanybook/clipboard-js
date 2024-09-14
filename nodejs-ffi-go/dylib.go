@@ -1,10 +1,10 @@
-// go build -o libcall.dylib -buildmode=c-shared -ldflags="-s -w" dylib.go
+// go build -o storage_kit.dylib -buildmode=c-shared -ldflags="-s -w" dylib.go
+// go build -o storage_kit.so -buildmode=c-shared -ldflags="-s -w" dylib.go
+// go build -o storage_kit.dll -buildmode=c-shared -ldflags="-s -w" dylib.go
 
 package main
 
 /*
-// #cgo CFLAGS: -I./
-// #cgo LDFLAGS: -ldl
 #cgo CFLAGS: -std=c99
 
 #include <stdlib.h>
@@ -12,6 +12,7 @@ package main
 typedef void (*JsCallback)(char*);
 static void callJsCallback(JsCallback cb, char* val) {
     cb(val);
+    free(val);
 }
 */
 import "C"
@@ -50,7 +51,9 @@ func AsyncCall(actPtr *C.char, jsonDataPtr *C.char, cb C.JsCallback) {
 
 			if i > 3 {
 				// C.callJsCallback(cb, C.CString("hello world!"))
-				C.callJsCallback(cb, C.CString(`{"code":0,"data":{"hello":"world"}}`))
+
+				respPtr := C.CString(`{"code":0,"data":{"hello":"world"}}`)
+				C.callJsCallback(cb, respPtr)
 				break
 			}
 		}

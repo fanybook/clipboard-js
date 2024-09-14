@@ -19,10 +19,8 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 /* Start of preamble from import "C" comments.  */
 
 
-#line 5 "dylib.go"
+#line 7 "dylib.go"
 
-// #cgo CFLAGS: -I./
-// #cgo LDFLAGS: -ldl
 
 
 #include <stdlib.h>
@@ -30,6 +28,7 @@ typedef struct { const char *p; ptrdiff_t n; } _GoString_;
 typedef void (*JsCallback)(char*);
 static void callJsCallback(JsCallback cb, char* val) {
     cb(val);
+    free(val);
 }
 
 #line 1 "cgo-generated-wrapper"
